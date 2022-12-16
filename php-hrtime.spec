@@ -4,13 +4,14 @@
 #
 Name     : php-hrtime
 Version  : 0.6.0
-Release  : 25
+Release  : 26
 URL      : https://pecl.php.net//get/hrtime-0.6.0.tgz
 Source0  : https://pecl.php.net//get/hrtime-0.6.0.tgz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause
 Requires: php-hrtime-lib = %{version}-%{release}
+Requires: php-hrtime-license = %{version}-%{release}
 BuildRequires : buildreq-php
 Patch1: PHP-8.patch
 
@@ -21,9 +22,18 @@ This PHP extension brings the possibility to use a high resolution timer from th
 %package lib
 Summary: lib components for the php-hrtime package.
 Group: Libraries
+Requires: php-hrtime-license = %{version}-%{release}
 
 %description lib
 lib components for the php-hrtime package.
+
+
+%package license
+Summary: license components for the php-hrtime package.
+Group: Default
+
+%description license
+license components for the php-hrtime package.
 
 
 %prep
@@ -40,6 +50,8 @@ phpize
 make  %{?_smp_mflags}
 
 %install
+mkdir -p %{buildroot}/usr/share/package-licenses/php-hrtime
+cp %{_builddir}/hrtime-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/php-hrtime/4f95a376df6f39604df0f21622b3fc8c6b43fc7a
 %make_install
 
 
@@ -48,4 +60,8 @@ make  %{?_smp_mflags}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/extensions/no-debug-non-zts-20210902/hrtime.so
+/usr/lib64/extensions/no-debug-non-zts-20220829/hrtime.so
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/php-hrtime/4f95a376df6f39604df0f21622b3fc8c6b43fc7a
