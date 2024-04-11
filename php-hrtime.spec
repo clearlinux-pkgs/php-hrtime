@@ -7,7 +7,7 @@
 #
 Name     : php-hrtime
 Version  : 0.6.0
-Release  : 57
+Release  : 58
 URL      : https://pecl.php.net//get/hrtime-0.6.0.tgz
 Source0  : https://pecl.php.net//get/hrtime-0.6.0.tgz
 Summary  : No detailed summary available
